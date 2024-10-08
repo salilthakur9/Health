@@ -19,7 +19,7 @@ const Header = () => {
           </p>
         </div>
         <a href='' className='text-white text-base md:text-lg flex items-center'>
-          Book Appointment  messi better
+          Book Appointment
           <img src={assets.arrow_icon} alt='arrow' className='ml-2' />
         </a>
       </div>
