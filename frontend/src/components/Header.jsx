@@ -14,11 +14,11 @@ const Header = () => {
         <img className='w-28' src={assets.group_profiles} />
           <p className='text-white text-sm md:text-base lg:text-lg'>
             It’s about empowering patients with better choices and advanced care
-            <br />
+            <br className='hidden sm:block' />
             to healthcare professionals, making the journey more aligned.
           </p>
         </div>
-        <a href='' className='text-white text-base md:text-lg flex items-center'>
+        <a href="#speciality" className='flex items-center gap-2 bg-white px-8 py-3 rounded-full text-green-600 text-sm hover:scale-105 transition-all duration-300'>
           Book Appointment
           <img src={assets.arrow_icon} alt='arrow' className='ml-2' />
         </a>
