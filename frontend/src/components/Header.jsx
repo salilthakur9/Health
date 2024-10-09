@@ -12,7 +12,7 @@ const Header = () => {
         </p>
         <div className='flex flex-col md:flex-row item-center gap-3 text-white text-sm font-light'>
         <img className='w-28' src={assets.group_profiles} />
-          <p className='text-white text-sm md:text-base lg:text-lg'>
+          <p className='text-white text-sm md:text-base sm:text-sm'>
             It’s about empowering patients with better choices and advanced care
             <br className='hidden sm:block' />
             to healthcare professionals, making the journey more aligned.
