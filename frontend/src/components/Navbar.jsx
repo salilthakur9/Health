@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <div className='flex item-center justify-between text-sm py-4 mb-5 border-b border-b-green-400'>
-        <img style={{ width: '125px', height: '40px' }} className='w-44 cursor-pointer' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuN0ER80knaKBm7m-gDsQdlLTxHxPMo1o3Wg&s" alt="" />
+        <img onClick={()=>navigate('/')} style={{ width: '125px', height: '40px' }} className='w-44 cursor-pointer' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuN0ER80knaKBm7m-gDsQdlLTxHxPMo1o3Wg&s" alt="" />
         <ul className='hidden md:flex item-start gap-5 font-medium'>
             <NavLink to='/'>
                 <li className='py-1'>HOME</li>

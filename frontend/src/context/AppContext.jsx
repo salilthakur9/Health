@@ -1,12 +1,13 @@
-import { createContext } from "react";
-import PropTypes from "prop-types";  // Importing PropTypes
-import { doctors } from "../assets/assets";
+import { createContext } from 'react';
+import PropTypes from 'prop-types';
+import { doctors, specialityData } from '../assets/assets'; // Ensure correct asset import
 
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
   const value = {
     doctors,
+    specialityData,
   };
 
   return (
@@ -16,9 +17,8 @@ const AppContextProvider = (props) => {
   );
 };
 
-// Adding PropTypes validation
 AppContextProvider.propTypes = {
-  children: PropTypes.node.isRequired,  // Validating that children is required
+  children: PropTypes.node.isRequired,
 };
 
 export default AppContextProvider;
