@@ -5,9 +5,12 @@ import { doctors, specialityData } from '../assets/assets'; // Ensure correct as
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
+
+  const currencySymbol = '₹';
   const value = {
     doctors,
     specialityData,
+    currencySymbol,
   };
 
   return (
