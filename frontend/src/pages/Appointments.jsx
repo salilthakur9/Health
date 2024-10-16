@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
+import RelatedDoctors from '../components/RelatedDoctors'
+
 
 const Appointment = () => {
 
@@ -123,7 +125,6 @@ const Appointment = () => {
     ))
   }
 </div>
-</div>
 <div className='flex item-center gap-3 w-full overflow-x-scroll mt-4'>
   {
     docSlots.length && docSlots[slotIndex].map((item, index) => (
@@ -139,6 +140,10 @@ const Appointment = () => {
 
 <button className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6'>Book Appointment</button>
     </div>
+    
+    {/* listing related doctors*/}
+    <RelatedDoctors docId={docId} speciality={docInfo.speciality} />
+</div>
   )
 }
 
