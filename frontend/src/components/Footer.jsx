@@ -1,12 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
+    const navigate = useNavigate()
   return (
     <div className='md:mx-10'>
         <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm'>
             {/*---left----*/}
             <div>
-                <img className='mb-5 w-40' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuN0ER80knaKBm7m-gDsQdlLTxHxPMo1o3Wg&s" alt="" />
+            <img onClick={() => {navigate('/'); window.scrollTo(0, 0);}}className='mb-5 w-40' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuN0ER80knaKBm7m-gDsQdlLTxHxPMo1o3Wg&s" alt=""/>
                 <p className='w-full md:w-2/3 text-green-600 leading-0'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel impedit inventore eos porro, saepe optio assumenda, pariatur tempore fugit nam ipsam soluta dolorum aliquid. Reprehenderit rem unde, amet voluptates laborum repellendus reiciendis voluptate doloribus. Omnis, explicabo. Assumenda voluptatem dolorum quisquam! Dolor corrupti nesciunt illum et similique temporibus animi consectetur veritatis.</p>
             </div>
 
