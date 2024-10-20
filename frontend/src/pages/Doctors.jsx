@@ -7,7 +7,9 @@ const Doctors = () => {
 
   const {speciality} = useParams()   // it will get the speciality from the url 
   const [filterDoc, setFilterDoc] = useState([])
+  const [showFilter, setShowFilter] = useState(false)  // Corrected useState here
   const {doctors} = useContext(AppContext)
+
   const navigate = useNavigate();
 
   const filterDoctors = () => {
@@ -26,7 +28,15 @@ const Doctors = () => {
     <div>
       <p className='text-green-600'>Browse through the doctors specialist.</p>
       <div className='flex flex-col sm:flex-row items-start gap-5 mt-5'>
-        <div className=' flex flex-col gap-4 text-sm text-green-900'>
+
+        <button 
+          className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${showFilter ? 'bg-primary text-white' : ''}`} 
+          onClick={() => setShowFilter(prev => !prev)}  // Button toggling state
+        >
+          Filters
+        </button>
+
+        <div className={`flex-col gap-4 text-sm text-green-900 ${showFilter ? 'flex' : 'hidden sm:flex'}`}>
           <p onClick={()=> speciality=== 'General physician' ? navigate('/doctors') : navigate('/doctors/General physician')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-green-300 rounded transition-all cursor-pointer ${speciality === "General physician" ? "bg-green-100 text-green" : ""}`}>General Physician</p>
           <p onClick={()=> speciality=== 'Gynecologist' ? navigate('/doctors') : navigate('/doctors/Gynecologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-green-300 rounded transition-all cursor-pointer ${speciality === "Gynecologist" ? "bg-green-100 text-green" : ""}`}>Gynecologist</p>
           <p onClick={()=> speciality=== 'Dermatologist' ? navigate('/doctors') : navigate('/doctors/Dermatologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-green-300 rounded transition-all cursor-pointer ${speciality === "Dermatologist" ? "bg-green-100 text-green" : ""}`}>Dermatologist</p>
@@ -34,6 +44,7 @@ const Doctors = () => {
           <p onClick={()=> speciality=== 'Neurologist' ? navigate('/doctors') : navigate('/doctors/Neurologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-green-300 rounded transition-all cursor-pointer ${speciality === "Neurologist" ? "bg-green-100 text-green" : ""}`}>Neurologist</p>
           <p onClick={()=> speciality=== 'Gastroenterologist' ? navigate('/doctors') : navigate('/doctors/Gastroenterologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-green-300 rounded transition-all cursor-pointer ${speciality === "Gastroenterologist" ? "bg-green-100 text-green" : ""}`}>Gastroenterologist</p>
         </div>
+
         <div className='w-full grid grid-cols-auto gap-4 gap-y-6'>
           {
             filterDoc.map((item) => (
