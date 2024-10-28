@@ -73,12 +73,12 @@ const AddDoctor = () => {
 
 
   return (
-    <form onSubmit={onSubmitHandler} className="m-5 w-full">
+    <form onSubmit={onSubmitHandler} className=" m-5 w-full">
       <p className="mb-3 text-lg font-medium">Add Doctor</p>
       <div className="bg-white px-8 py-8 border rounded w-full max-w-4xl max-h-[80vh] overflow-y-scroll">
         <div className="flex items-center gap-4 mb-8 text-green-700"> 
           <label htmlFor="doc-img">
-            <img className="w-16 bg-green-100 rounded-full cursor-pointer" src={ docImg ? URL.createObjectURL(docImg) :assets.upload_area} />
+            <img className="w-16 bg-blue-100 rounded-full cursor-pointer" src={ docImg ? URL.createObjectURL(docImg) :assets.upload_area} />
           </label>
           <input onChange={(e)=> setDocImg(e.target.files[0])} type="file" id="doc-img" hidden />
           <p>

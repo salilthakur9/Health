@@ -4,6 +4,7 @@ import 'dotenv/config'                     // get the support of environment var
 import connetDB from './config/mongodb.js'
 import connectCloudinary from './config/cloudinary.js'
 import adminRouter from './routes/adminRoute.js'
+import doctorRouter from './routes/doctorRoute.js'
 
 
 // app config
@@ -16,8 +17,10 @@ connectCloudinary()
 app.use(express.json())         // whenever we made an req it will get passs using this 
 app.use(cors())                   // it will allow frontend to connect with backend
 
+
 //API endpoints
 app.use('/api/admin', adminRouter)
+app.use('/api/doctor', doctorRouter)
 
 app.get('/',(req, res)=>{
     res.send('API WORKING !')
