@@ -4,19 +4,16 @@ import { specialityData } from '../assets/assets';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-export const AppContext = createContext(); // Named export for AppContext
-
+export const AppContext = createContext(); 
 const AppContextProvider = ({ children }) => {
   const currencySymbol = '₹';
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const [doctors, setDoctors] = useState([]);
 
-  const value = {
-    doctors,
-    specialityData,
-    currencySymbol,
-  };
+  const [token,setToken] = useState(localStorage.getItem('token')?localStorage.getItem('token'): false)
+
+
 
   const getDoctorsData = async () => {
     try {
@@ -32,6 +29,14 @@ const AppContextProvider = ({ children }) => {
 
       toast.error(error.message);
     }
+  };
+
+  const value = {
+    doctors,
+    specialityData,
+    currencySymbol,
+    token,setToken,
+    backendUrl
   };
 
   useEffect(() => {
