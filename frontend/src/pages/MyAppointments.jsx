@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 const MyAppointments = () => {
 
 
-const {backendUrl, token} = useContext(AppContext)
+const {backendUrl, token, getDoctorsData} = useContext(AppContext)
 
 const [appointments, setAppointments] = useState([])
 
@@ -31,9 +31,32 @@ const getUserAppointments = async() =>{
   }
 }
 
+const cancelAppointment = async (appointmentId) => {
+  try {
+    const { data } = await axios.post(backendUrl + '/api/user/cancel-appointment', { appointmentId }, { headers: { token } });
+    if (data.success) {
+      toast.success(data.message);
+
+      // Update the appointment status in the local state
+      setAppointments(prevAppointments =>
+        prevAppointments.map(appointment =>
+          appointment._id === appointmentId ? { ...appointment, cancelled: true } : appointment
+        )
+      );
+    } else {
+      toast.error(data.message);
+    }
+  } catch (error) {
+    console.log(error);
+    toast.error(error.message);
+  }
+};
+
+
 useEffect(()=>{
   if(token){
     getUserAppointments()
+    getDoctorsData()
   }
 },[token])
 
@@ -54,12 +77,14 @@ useEffect(()=>{
               <p className='text-xs'>{item.docData.address.line2}</p>
               <p className='text-sm mt-1'><span className='text-sm text-green-700 font-medium'>Date & Time</span> {slotDateFormat(item.slotDate)} |  {item.slotTime}</p>
             </div>
+            
             <div>
 
             </div>
             <div className='flex flex-col gap-2 justify-end'>
-              <button className='text-sm text-green-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white tansition-all duration-300'>Pay Online</button>
-              <button className='text-sm text-green-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-500 hover:text-white tansition-all duration-300'>Cancel Appointment</button>
+              {!item.cancelled && <button className='text-sm text-green-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white tansition-all duration-300'>Pay Online</button>}
+              {!item.cancelled && <button onClick={()=>cancelAppointment(item._id)} className='text-sm text-green-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-500 hover:text-white tansition-all duration-300'>Cancel Appointment</button>}
+              {item.cancelled && <button className='sm:min-w-48 py-2 border border-red-500 rounded text-red-500'>Appointment Cancelled</button>}
             </div>
             </div>
         ))}
