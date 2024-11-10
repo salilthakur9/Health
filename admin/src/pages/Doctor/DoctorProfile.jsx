@@ -6,8 +6,8 @@ import { toast } from 'react-toastify'
 
 const DoctorProfile = () => {
 
-  const {dToken, profileData, setProfileData, getProfileData} = useContext(DoctorContext)
-  const {currency, backendUrl} = useContext(AppContext)
+  const {dToken, profileData, setProfileData, getProfileData, backendUrl} = useContext(DoctorContext)
+  const {currency} = useContext(AppContext)
 
   const [isEdit , setIsEdit] = useState(false)
 
