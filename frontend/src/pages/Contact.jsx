@@ -13,7 +13,7 @@ const Contact = () => {
       <div className='flex flex-col justify-center items-start gap-6'>
         <p className='font-semibold text-lg text-green-600'>OUR OFFICE</p>
         <p className='text-green-500'>Chitkara University <br />Rajpura, Punjab, INDIA</p>
-        <p className='text-green-500'>Tel: +91 1234567890 <br />Email: salil@gmail.com</p>
+        <p className='text-green-500'>Tel: +91 1234567890 <br />Email: health@healthsphere.com</p>
         <p className='font-semibold text-lg text-green-600'>Careers at Health-Sphere</p>
         <p className='text-green-500'>Learn more about our team and job openings</p>
         <button className='border border-green-800 px-8 py-4 text-green-800 text-sm hover:bg-green-800 hover:text-white transition-all duration-300'>Explore Jobs</button>
